@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import postDbObj from "../Appwrite/Database";
-import { Card } from "./Index";
+import { Button, Card } from "./Index";
 
 const Home = () => {
   const [allPostData, setAllPostData] = useState([]);
@@ -39,7 +39,7 @@ const Home = () => {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-1">
                 <div className="max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                   <h2 className="text-2xl font-bold text-white">Blogs</h2>
-                  <div className="my-4 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                  <div className="my-auto w-auto space-y-11 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
                     {allPostData.map((post, index) => (
                       index < 3 && (
                         <div key={post.$id}>
@@ -62,6 +62,8 @@ const Home = () => {
               </div>
             </div>
 
+            <Button type="submit" children="See More Listing" />
+{/* 
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#"
@@ -75,7 +77,7 @@ const Home = () => {
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* END - This is the center part where logo will come  */}

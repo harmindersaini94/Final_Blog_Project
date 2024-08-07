@@ -23,14 +23,16 @@ const Card = ({ $id, title, image }) => {
 
       <Link to={`/viewpost/${$id}`}>
         {/* <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"> */}
-          <div className="group relative">
-            <div className="relative max-w-md shadow-lg m-4 p-5 h-100 w-full overflow-hidden rounded-lg backdrop-blur-sm bg-white/10 sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+          {/* <div className="group relative"> */}
+            <div className=" max-w-md shadow-lg rounded-lg backdrop-blur-sm bg-white/10 group-hover:opacity-75">
+            {/* <div className="relative"> */}
               <img
                 alt={title}
                 src={postDbObj.PreviewFile(image[0])}
-                className="mx-auto h-48 w-5/6 object-cover object-center"
+                // className="mx-auto w-full h-full object-cover object-center"
+                className="m-4 p-12 w-[40rem] h-[30rem] text-center object-cover object-center"
               />
-            </div>
+            {/* </div> */}
             <h3 className="mt-6 text-sm text-gray-500">
               <span className="absolute inset-0" />
               {title}
