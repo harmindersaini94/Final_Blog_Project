@@ -6,7 +6,8 @@ const Logo = () => {
   return (
     <div className="flex flex-shrink-0 items-center">
     <img
-      className="w-20 rounded-full"
+      // className="w-20 rounded-full"
+      className="h-8 w-auto rounded-full"
       src={SiteLogo2}
       alt="Harminder-Singh-Saini"
     ></img>
