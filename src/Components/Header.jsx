@@ -60,7 +60,7 @@ const Header = () => {
 
   return (
     <div>
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="absolute inset-x-0 top-0 z-50 overflow-hidden">
         <nav
           aria-label="Global"
           className="flex items-center justify-between p-6 lg:px-8"
@@ -75,7 +75,7 @@ const Header = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="h-6 w-6" />
@@ -86,7 +86,7 @@ const Header = () => {
               (item, index) =>
                 item.status && (
                   <li
-                    className="list-none text-sm font-semibold leading-6 text-gray-900"
+                    className="list-none text-lg font-semibold leading-6 text-white"
                     key={index}
                   >
                     <button onClick={() => navigate(item.path)}>
@@ -96,12 +96,12 @@ const Header = () => {
                 )
             )}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex gap-4 lg:flex-1 lg:justify-end">
             {navItemRight.map(
               (item, index) =>
                 item.status && (
                   <li
-                    className="list-none text-sm font-semibold leading-6 text-gray-900"
+                    className="list-none text-lg font-semibold leading-6 text-white"
                     key={index}
                   >
                     <button onClick={() => navigate(item.path)}>
@@ -112,7 +112,7 @@ const Header = () => {
             )}
             {loginStat && (
               <>
-                <li className="list-none text-sm font-semibold leading-6 text-gray-900">
+                <li className="list-none text-sm font-semibold leading-6 text-white">
                   <button onClick={logoutFn}>Logout</button>
                 </li>
               </>
@@ -125,7 +125,7 @@ const Header = () => {
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-52 overflow-y-auto backdrop-blur-sm bg-white/25 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Blog By HS</span>
@@ -138,7 +138,7 @@ const Header = () => {
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+                <XMarkIcon aria-hidden="true" className="h-6 w-6 text-black rounded-full  hover:bg-white/10" />
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -148,10 +148,15 @@ const Header = () => {
                     (item, index) =>
                       item.status && (
                         <li
-                          className="list-none -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          className="list-none -mx-3 block rounded-lg px-3 py-2 text-base font-bold leading-7 text-black hover:bg-white/10"
                           key={index}
                         >
-                          <button onClick={() => navigate(item.path)}>
+                          <button
+                            onClick={() => {
+                              navigate(item.path);
+                              setMobileMenuOpen(false);
+                            }}
+                          >
                             {item.name}
                           </button>
                         </li>
@@ -163,10 +168,15 @@ const Header = () => {
                     (item, index) =>
                       item.status && (
                         <li
-                          className="list-none -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          className="list-none -mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-black hover:bg-white/10"
                           key={index}
                         >
-                          <button onClick={() => navigate(item.path)}>
+                          <button
+                            onClick={() => {
+                              navigate(item.path);
+                              setMobileMenuOpen(false);
+                            }}
+                          >
                             {item.name}
                           </button>
                         </li>
@@ -174,7 +184,7 @@ const Header = () => {
                   )}
                   {loginStat && (
                     <>
-                      <li className="list-none -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <li className="list-none -mx-3 block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-black hover:bg-white/10">
                         <button onClick={logoutFn}>Logout</button>
                       </li>
                     </>
