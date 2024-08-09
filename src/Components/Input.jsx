@@ -12,7 +12,7 @@ const Input = (
         {label && (
           <label
             htmlFor={id}
-            className="block text-sm font-medium leading-6 text-white"
+            className="block text-sm font-bold leading-6 text-cyan-600"
           >
             {label}
           </label>

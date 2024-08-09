@@ -47,14 +47,14 @@ const Signup = () => {
         <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl ">
           <div className="leading-relaxed tracking-wide">
             <div className="text-center">
-              <h1 className="text-white font-bold text-4xl">Sign Up</h1>
+              <h1 className="text-cyan-600 font-bold text-4xl">Sign Up</h1>
               <h3 className="mt-6 p-6 text-gray-400 text-xl font-semibold border-b-2">
                 Already have an account?&nbsp;
                 <Link
                   to="/login"
                   className="font-medium text-primary transition-all duration-200 hover:font-extrabold"
                 >
-                  <span className="text-blue-800"> Log In</span>
+                  <span className="text-cyan-600"> Log In</span>
                 </Link>
               </h3>
             </div>

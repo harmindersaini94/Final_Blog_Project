@@ -47,23 +47,23 @@ const Header = () => {
 
   const navItemRight = [
     {
-      name: "Login",
+      name: "Sign in",
       path: "/login",
       status: !loginStat,
     },
     {
-      name: "Signup",
+      name: "Sign up",
       path: "/signup",
       status: !loginStat,
     },
   ];
 
   return (
-    <div>
+    <div className="mt-0 w-full px-2 sm:px-6 lg:px-8 bg-cyan-600 h-16 items-center justify-between">
       <header className="absolute inset-x-0 top-0 z-50 overflow-hidden">
         <nav
           aria-label="Global"
-          className="flex items-center justify-between p-6 lg:px-8"
+          className="flex items-center justify-between p-2 lg:px-8"
         >
           <div className="flex lg:flex-1">
             <Link to="/" className="-m-1.5 p-1.5">
@@ -75,7 +75,7 @@ const Header = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black"
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="h-6 w-6" />
@@ -86,7 +86,7 @@ const Header = () => {
               (item, index) =>
                 item.status && (
                   <li
-                    className="list-none text-lg font-semibold leading-6 text-white"
+                    className="list-none text-lg font-bold leading-6 text-black"
                     key={index}
                   >
                     <button onClick={() => navigate(item.path)}>
@@ -101,7 +101,7 @@ const Header = () => {
               (item, index) =>
                 item.status && (
                   <li
-                    className="list-none text-lg font-semibold leading-6 text-white"
+                    className="list-none text-lg font-bold leading-6 text-black"
                     key={index}
                   >
                     <button onClick={() => navigate(item.path)}>
