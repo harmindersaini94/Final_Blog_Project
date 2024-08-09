@@ -10,7 +10,9 @@ const Card = ({ $id, title, image }) => {
           <img
             alt={title}
             src={postDbObj.PreviewFile(image[0])}
+            // className="transition-transform group-hover:scale-110 duration-200 object-cover object-center w-[100%] h-[100%]"
             className="transition-transform group-hover:scale-110 duration-200 object-cover object-center w-[100%] h-[100%]"
+            
           />
           <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent">
             <div className="p-3 text-white">

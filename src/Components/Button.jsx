@@ -12,7 +12,8 @@ const Button = ({
   return (
     <button
     type={type}
-    className={` px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}
+    // className={` px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}
+    className="border-3 my-2 p-2 w-full rounded-lg bg-sky-700 p-1"
     {...props}
     >{children} </button>
   )
