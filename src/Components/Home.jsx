@@ -16,7 +16,7 @@ const Home = () => {
       //   <div className="text-center ">
 
               <div className="text-center my-24 lg:my-48 overflow-hidden mx-auto"> 
-                <h2 className="text-4xl mb-12 font-bold text-cyan-600">Blogs</h2>
+                <h2 className="text-4xl mb-12 font-bold text-cyan-600">Our Top Stories</h2>
                 {/* The card will come inside this div */}
                 <div className="w-full lg:w-full flex flex-wrap justify-center items-center gap-8 content-center">
                   {allPostData.map(

@@ -46,7 +46,7 @@ const Login = () => {
             src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg"
           />
         </div>
-        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl ">
+        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600 ">
           <div className="leading-relaxed tracking-wide">
             <div className="text-center">
               <h1 className="text-cyan-600 font-bold text-4xl">Log In</h1>

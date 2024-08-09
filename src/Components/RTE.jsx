@@ -6,7 +6,7 @@ import envObj from "../Config/Config";
 function RTE({ name, control, label, defaultValue = "" }) {
   return (
     <div className="w-full">
-      {label && <label className="inline-block mb-1 pl-1">{label} </label>}
+      {label && <label  className="block text-sm font-bold leading-6 text-cyan-600">{label} </label>}
 
       <Controller
         name={name || "content"}
@@ -14,11 +14,12 @@ function RTE({ name, control, label, defaultValue = "" }) {
 
         render={({ field: { onChange } }) => (
           <Editor
+          className="w-full h-10 rounded-md p-2 bg-gray-100"
             apiKey={envObj.TINYMCE_API_KEY} // <--- DOnt forget to add the API key for TinyMCE
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,
-              height: 500,
+              height: 400,
               menubar: true,
               plugins: [
                 "image",

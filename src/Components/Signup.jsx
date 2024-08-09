@@ -44,7 +44,7 @@ const Signup = () => {
             src="https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600"
           />
         </div>
-        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl ">
+        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600 ">
           <div className="leading-relaxed tracking-wide">
             <div className="text-center">
               <h1 className="text-cyan-600 font-bold text-4xl">Sign Up</h1>
