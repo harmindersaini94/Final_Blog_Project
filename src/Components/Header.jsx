@@ -59,7 +59,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="mt-0 w-full px-2 sm:px-6 lg:px-8 bg-cyan-600 h-16 items-center justify-between">
+    <div className="mt-0 w-full px-2 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-400 to-blue-600 h-16 items-center justify-between">
       <header className="absolute inset-x-0 top-0 z-50 overflow-hidden">
         <nav
           aria-label="Global"

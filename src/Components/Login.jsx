@@ -54,9 +54,9 @@ const Login = () => {
                 Don&apos;t have any account?&nbsp;
                 <Link
                   to="/signup"
-                  className="font-medium text-primary transition-all duration-200 hover:font-extrabold"
+                  className="font-medium text-primary  hover:font-extrabold"
                 >
-                  <span className="text-cyan-600"> Sign Up</span>
+                  <span className="text-cyan-600 "> Sign Up</span>
                 </Link>
               </h3>
             </div>

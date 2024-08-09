@@ -54,7 +54,7 @@ const Signup = () => {
                   to="/login"
                   className="font-medium text-primary transition-all duration-200 hover:font-extrabold"
                 >
-                  <span className="text-cyan-600"> Log In</span>
+                  <span className="text-cyan-600"> Sign In</span>
                 </Link>
               </h3>
             </div>
