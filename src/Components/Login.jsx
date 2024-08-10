@@ -6,14 +6,15 @@ import authObj from "../Appwrite/Auth.js";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Slice/HomestaySlice.js";
 import Loader from "./Loader";
-import signin from '../assets/signin.png'
+import signin from "../assets/signin.png";
+import { motion } from "framer-motion";
 
 const Login = () => {
-  const { register, handleSubmit,reset } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       email: "",
       password: "",
-    }
+    },
   });
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -39,8 +40,7 @@ const Login = () => {
     } catch (error) {
       setLoading(false);
       setError(error.message);
-      reset()
-      
+      reset();
     }
   };
 
@@ -52,7 +52,12 @@ const Login = () => {
         </div>
       )}
       <div className="relative overflow-hidden top-24 lg:top-48 flex flex-col lg:flex-row w-full flex-wrap content-center items-center justify-center gap-8 p-4">
-        <div className="overflow-hidden">
+        <motion.div
+          className="overflow-hidden"
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <img
             className="w-[300px] lg:w-[470px]  rounded-3xl object-contain "
             // src="https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -60,8 +65,13 @@ const Login = () => {
             // src="https://img.freepik.com/premium-vector/guardian-digital-realm-mans-vigilance-login-gate_1134661-21312.jpg?size=626&ext=jpg&ga=GA1.1.1631588099.1721891347&semt=ais_hybrid"
             src={signin}
           />
-        </div>
-        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600 ">
+        </motion.div>
+        <motion.div
+          className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600 "
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <div className="leading-relaxed tracking-wide">
             <div className="text-center">
               <h1 className="text-cyan-600 font-bold text-4xl">Sign In</h1>
@@ -103,7 +113,7 @@ const Login = () => {
               <Button type="submit" children="Sign In" />
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
 
       {/* <div className="flex items-center justify-center">

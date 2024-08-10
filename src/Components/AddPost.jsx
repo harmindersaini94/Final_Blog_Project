@@ -5,6 +5,7 @@ import postDbObj from "../Appwrite/Database";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const AddPost = ({ postEditData }) => {
   console.log("DATA FROM EDIT FORM", postEditData);
@@ -73,7 +74,7 @@ const AddPost = ({ postEditData }) => {
         }
       } catch (error) {
         setError(error.message);
-        reset()
+        reset();
       }
     } else {
       try {
@@ -106,7 +107,7 @@ const AddPost = ({ postEditData }) => {
         }
       } catch (error) {
         setError(error.message);
-        reset()
+        reset();
       }
     }
     setLoading(false);
@@ -120,16 +121,26 @@ const AddPost = ({ postEditData }) => {
         </div>
       )}
       <div className="w-full md:w-1/2 mx-auto relative overflow-hidden p-2 mt-4">
-        <h2 className="text-3xl mb-3 text-center font-bold text-cyan-600">
-          Add Post
-        </h2>
+        <motion.h2
+          className="text-3xl mb-3 text-center font-bold text-cyan-600"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {postEditData ? <p>Edit Post</p> : <p>Add Post</p>}
+        </motion.h2>
         <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600">
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+          {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
           <form
             onSubmit={handleSubmit(adPost)}
             className="flex flex-wrap content-center justify-center"
           >
-            <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
+            <motion.div
+              className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16"
+              initial={{ x: -200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <Input
                 label="Post Title :"
                 placeholder="Post Title"
@@ -161,8 +172,13 @@ const AddPost = ({ postEditData }) => {
                 control={control}
                 defaultValue={getValues("description")}
               />
-            </div>
-            <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
+            </motion.div>
+            <motion.div
+              className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16"
+              initial={{ x: 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <Input
                 label="Featured Image :"
                 type="file"
@@ -196,7 +212,7 @@ const AddPost = ({ postEditData }) => {
               >
                 {postEditData ? "Update" : "Submit"}
               </Button>
-            </div>
+            </motion.div>
           </form>
         </div>
       </div>

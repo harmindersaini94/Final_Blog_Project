@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { Button } from "./Index";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const ViewPost = () => {
   const [postData, setPostData] = useState(null);
@@ -47,11 +48,9 @@ const ViewPost = () => {
     });
 
     setLoading(false);
-
   }, []);
 
   useEffect(() => {
-  
     if (id) {
       // Means if user put any vauge id, then just navigate to home page
       postDbObj.GetParticularPost(id).then((post) => {
@@ -59,20 +58,18 @@ const ViewPost = () => {
           setPostData(post);
           const creationDate = new Date(post.$createdAt);
           const updationDate = new Date(post.$updatedAt);
-          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const options = { year: "numeric", month: "long", day: "numeric" };
 
-          setCreated(creationDate.toLocaleDateString('en-US', options))
-          setUpdated(updationDate.toLocaleDateString('en-US', options))
+          setCreated(creationDate.toLocaleDateString("en-US", options));
+          setUpdated(updationDate.toLocaleDateString("en-US", options));
 
           const pImg = postDbObj.PreviewFile(post.image[0]);
           setPostImage(pImg);
         }
       });
-
     } else {
       navigate("/");
     }
-
   }, [id, navigate]); // Each time there is navigation of change of ID, run useEffect
 
   return postData ? (
@@ -84,7 +81,12 @@ const ViewPost = () => {
       )}
       <div className="container mx-auto px-4 py-8 mt-16 flex flex-col lg:flex-row">
         {/* <!-- Sidebar --> */}
-        <aside className="w-full lg:w-1/5 bg-gradient-to-r from-teal-400 to-cyan-600 p-4 shadow mb-4 lg:mb-0 rounded-xl ">
+        <motion.aside
+          className="w-full lg:w-1/5 bg-gradient-to-r from-teal-400 to-cyan-600 p-4 shadow mb-4 lg:mb-0 rounded-xl "
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <h2 className="text-xl  font-extrabold mb-4">
             Here's what others are saying...
           </h2>
@@ -103,9 +105,14 @@ const ViewPost = () => {
 
             {/* <!-- Add more categories as needed --> */}
           </ul>
-        </aside>
+        </motion.aside>
 
-        <main className="w-full rounded-xl  lg:w-4/5 bg-gradient-to-r from-teal-400 to-cyan-600 text-black font-semibold p-4 shadow lg:ml-4 content-center">
+        <motion.main
+          className="w-full rounded-xl  lg:w-4/5 bg-gradient-to-r from-teal-400 to-cyan-600 text-black font-semibold p-4 shadow lg:ml-4 content-center"
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <article>
             <div className="flex flex-wrap justify-between">
               <div>
@@ -132,9 +139,7 @@ const ViewPost = () => {
             <h3 className="text-gray-600 italic mb-5">
               {/* Created at: {postData.$createdAt} */}
               Created on : {created}
-              {postData.$updatedAt && (
-                <span> || Updated on : {updated}</span>
-              )}
+              {postData.$updatedAt && <span> || Updated on : {updated}</span>}
             </h3>
 
             <div className="flex justify-center items-center group">
@@ -147,7 +152,7 @@ const ViewPost = () => {
 
             <h3>{parse(postData.description)}</h3>
           </article>
-        </main>
+        </motion.main>
       </div>
     </>
   ) : null;

@@ -3,6 +3,7 @@ import postDbObj from "../Appwrite/Database";
 import { Card } from "./Index";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
 
 const MyPost = () => {
   const [allPostData, setAllPostData] = useState([]);
@@ -26,8 +27,20 @@ const MyPost = () => {
       )}
 
       <div className="text-center my-4 lg:my-8 overflow-hidden mx-auto">
-        <h2 className="text-4xl mb-12 font-bold text-cyan-600">My Stories</h2>
-        <div className="w-full lg:w-full flex flex-wrap justify-center items-center gap-8 content-center">
+        <motion.h2
+          className="text-4xl mb-12 font-bold text-cyan-600"
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          My Stories
+        </motion.h2>
+        <motion.div
+          className="w-full lg:w-full flex flex-wrap justify-center items-center gap-8 content-center"
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           {allPostData?.map(
             (post, index) =>
               index < 3 && (
@@ -36,7 +49,7 @@ const MyPost = () => {
                 </div>
               )
           )}
-        </div>
+        </motion.div>
       </div>
     </>
     // <div className="w-full py-8">

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {createBrowserRouter, Route, createRoutesFromElements, RouterProvider} from 'react-router-dom'
+import {createBrowserRouter, Route, createRoutesFromElements, RouterProvider, useLocation} from 'react-router-dom'
 import {Home, Login, Signup, Logout, AddPost, AllPosts, MyPost, ViewPost, EditPost, Protection} from './Components/Index.js'
 import { Provider } from 'react-redux'
 import store from './Store.js'
@@ -24,7 +24,9 @@ const appRoute = createBrowserRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <React.StrictMode>
+    <></>
     <Provider store={store}>
     <RouterProvider router={appRoute} />
     </Provider>
