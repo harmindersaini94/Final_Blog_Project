@@ -50,7 +50,7 @@ class PostDatabase {
       return response;
     } catch (error) {
         console.log("Appwrite serive :: createDocument :: error", error);
-        throw "Appwrite serive :: createDocument :: error", error
+        throw error
     }
   }
 
@@ -64,7 +64,7 @@ class PostDatabase {
       return postData
     } catch (error) {
       console.log("Appwrite serive :: GetParticularPost :: error", error);
-      throw "Appwrite serive :: GetParticularPost :: error", error
+      throw error
     }
   }
 
@@ -77,7 +77,7 @@ class PostDatabase {
       return allPosts
     } catch (error) {
       console.log("Appwrite serive :: GetAllPosts :: error", error);
-      throw "Appwrite serive :: GetAllPosts :: error", error
+      throw error
     }
   }
 
@@ -93,7 +93,7 @@ class PostDatabase {
       return allPosts
     } catch (error) {
       console.log("Appwrite serive :: GetAllPostForAUser :: error", error);
-      throw "Appwrite serive :: GetAllPostForAUser :: error", error
+      throw error
     }
   }
 
@@ -107,7 +107,7 @@ class PostDatabase {
       return response
     } catch (error) {
       console.log("Appwrite serive :: DeletePost :: error", error);
-      throw "Appwrite serive :: DeletePost :: error", error
+      throw error
     }
   }
 
@@ -122,7 +122,7 @@ class PostDatabase {
         )
     } catch (error) {
       console.log("Appwrite serive :: UploadFile :: error", error);
-      throw "Appwrite serive :: UploadFile :: error", error
+      throw error
     }
 }
 
@@ -153,7 +153,7 @@ async UpdatePost({
   )
   } catch (error) {
     console.log("Appwrite serive :: UpdatePost :: error", error);
-    throw "Appwrite serive :: UpdatePost :: error", error
+    throw error
   }
 }
 
@@ -166,7 +166,7 @@ PreviewFile(fileId){
       )
   } catch (error) {
     console.log("Appwrite serive :: PreviewFile :: error", error);
-    throw "Appwrite serive :: PreviewFile :: error", error
+    throw error
   }
 }
 
@@ -178,7 +178,7 @@ async DeleteFile(fileId){
       )
   } catch (error) {
     console.log("Appwrite serive :: DeleteFile :: error", error);
-    throw "Appwrite serive :: DeleteFile :: error", error
+    throw error
   }
 }
 

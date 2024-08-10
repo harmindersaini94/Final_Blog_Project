@@ -27,7 +27,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className="text-center my-24 lg:my-48 overflow-hidden mx-auto">
+      <div className="text-center my-12 lg:my-24 overflow-hidden mx-auto">
         <h2 className="text-4xl mb-12 font-bold text-cyan-600">
           Our Top Stories
         </h2>
@@ -35,11 +35,11 @@ const Home = () => {
         <div className="w-full lg:w-full flex flex-wrap justify-center items-center gap-8 content-center">
           {allPostData?.map( // ? is doneso that even if array 
             (post, index) =>
-              index < 3 && (
+              // index < 3 && (
                 <div key={post.$id} className="">
                   <Card {...post} />
                 </div>
-              )
+              // )
           )}
         </div>
         {/* <Button className="mt-12" type="submit" children="See More Listing" /> */}

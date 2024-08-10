@@ -64,10 +64,6 @@ const AddPost = ({ postEditData }) => {
           fileIdArr.push(id.$id);
         }
 
-        // console.log(fileIdArr)
-        // console.log("1 ", data)
-
-        // console.log("Userdata in Add Post ", userdata);
         data.userid = userdata.$id;
         data.image = fileIdArr;
 
@@ -77,6 +73,7 @@ const AddPost = ({ postEditData }) => {
         }
       } catch (error) {
         setError(error.message);
+        reset()
       }
     } else {
       try {
@@ -107,7 +104,10 @@ const AddPost = ({ postEditData }) => {
         if (file) {
           navigate(`/viewpost/${file.$id}`);
         }
-      } catch (error) {}
+      } catch (error) {
+        setError(error.message);
+        reset()
+      }
     }
     setLoading(false);
   };
@@ -124,6 +124,7 @@ const AddPost = ({ postEditData }) => {
           Add Post
         </h2>
         <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600">
+        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
           <form
             onSubmit={handleSubmit(adPost)}
             className="flex flex-wrap content-center justify-center"

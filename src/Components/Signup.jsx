@@ -6,6 +6,7 @@ import authObj from "../Appwrite/Auth.js";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../Slice/HomestaySlice.js";
 import Loader from "./Loader";
+import signup from '../assets/signup.png'
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
@@ -45,11 +46,13 @@ const Signup = () => {
           <Loader />
         </div>
       )}
-      <div className="relative overflow-hidden top-24 lg:top-44 flex flex-col lg:flex-row w-full flex-wrap content-center items-center justify-center gap-8 p-4">
+      <div className="relative overflow-hidden top-16 lg:top-32 flex flex-col lg:flex-row w-full flex-wrap content-center items-center justify-center gap-8 p-4">
         <div className="overflow-hidden">
           <img
-            className="w-[300px] lg:w-[430px] grayscale rounded-3xl object-contain "
-            src="https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600"
+            className="w-[300px] lg:w-[560px]  rounded-3xl object-contain "
+            // src="https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600"
+            // src="https://img.freepik.com/premium-vector/illustration-vector-graphic-cartoon-character-online-registration_516790-1807.jpg?ga=GA1.1.1631588099.1721891347&semt=ais_hybrid"
+            src={signup}
           />
         </div>
         <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600 ">

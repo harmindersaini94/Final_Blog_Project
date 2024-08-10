@@ -28,7 +28,7 @@ const Protection = ({children}) => {
      */
     useEffect( () => {
         if(!authStatus){
-            navigate("/")
+            navigate("/login")
             setLoader(false)
         }
         else setLoader(false)
