@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import postDbObj from "../Appwrite/Database";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const AddPost = ({ postEditData }) => {
   console.log("DATA FROM EDIT FORM", postEditData);
@@ -47,9 +48,10 @@ const AddPost = ({ postEditData }) => {
   const [error, setError] = useState("");
   const userdata = useSelector((state) => state.userdata);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const adPost = async (data) => {
-    console.log("Data From AdPost Form SUbmit", data);
+    setLoading(true);
     setError("");
 
     if (!postEditData) {
@@ -107,87 +109,97 @@ const AddPost = ({ postEditData }) => {
         }
       } catch (error) {}
     }
+    setLoading(false);
   };
 
   return (
-    <div className="w-full md:w-1/2 mx-auto relative overflow-hidden p-2 mt-4">
-      <h2 className="text-3xl mb-3 text-center font-bold text-cyan-600">Add Post</h2>
-      <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600">
-        <form
-          onSubmit={handleSubmit(adPost)}
-          className="flex flex-wrap content-center justify-center"
-        >
-          <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
-            <Input
-              label="Post Title :"
-              placeholder="Post Title"
-              // className="mb-4"
-              defaultValue={postEditData?.title || ""}
-              {...register("title", { required: true })}
-            />
-            <Input
-              label="Email :"
-              placeholder="Email"
-              className="mb-4"
-              {...register("email", { required: true })}
-            />
-            <Input
-              label="Phone :"
-              placeholder="Phone"
-              className="mb-4"
-              {...register("phone", { required: true })}
-            />
-            <Input
-              label="Address :"
-              placeholder="Address"
-              className="mb-4"
-              {...register("address", { required: true })}
-            />
-            <RTE
-              label="Description :"
-              name="description"
-              control={control}
-              defaultValue={getValues("description")}
-            />
-          </div>
-          <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
-            <Input
-              label="Featured Image :"
-              type="file"
-              className="mb-4"
-              accept="image/png, image/jpg, image/jpeg, image/gif"
-              multiple
-              {...register("image", { required: !postEditData })}
-            />
-            {postEditData && (
-              // <div className="w-full mb-4">
-              <div className="relative max-w-xs overflow-hidden rounded-2xl shadow-lg group my-4">
-                <img
-                  src={postDbObj.PreviewFile(postEditData.image[0])}
-                  alt={postDbObj.title}
-                  // className="rounded-lg"
-                  className="transition-transform border-2 border-cyan-600 rounded-sm  group-hover:scale-110 duration-200 object-cover object-center w-[100%] h-[100%]"
-                />
-              </div>
-            )}
+    <>
+      {loading && (
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+          <Loader />
+        </div>
+      )}
+      <div className="w-full md:w-1/2 mx-auto relative overflow-hidden p-2 mt-4">
+        <h2 className="text-3xl mb-3 text-center font-bold text-cyan-600">
+          Add Post
+        </h2>
+        <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl border-cyan-600">
+          <form
+            onSubmit={handleSubmit(adPost)}
+            className="flex flex-wrap content-center justify-center"
+          >
+            <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
+              <Input
+                label="Post Title :"
+                placeholder="Post Title"
+                // className="mb-4"
+                defaultValue={postEditData?.title || ""}
+                {...register("title", { required: true })}
+              />
+              <Input
+                label="Email :"
+                placeholder="Email"
+                className="mb-4"
+                {...register("email", { required: true })}
+              />
+              <Input
+                label="Phone :"
+                placeholder="Phone"
+                className="mb-4"
+                {...register("phone", { required: true })}
+              />
+              <Input
+                label="Address :"
+                placeholder="Address"
+                className="mb-4"
+                {...register("address", { required: true })}
+              />
+              <RTE
+                label="Description :"
+                name="description"
+                control={control}
+                defaultValue={getValues("description")}
+              />
+            </div>
+            <div className="w-full lg:w-1/2 px-4 md:px-8 lg:px-16">
+              <Input
+                label="Featured Image :"
+                type="file"
+                className="mb-4"
+                accept="image/png, image/jpg, image/jpeg, image/gif"
+                multiple
+                {...register("image", { required: !postEditData })}
+              />
+              {postEditData && (
+                // <div className="w-full mb-4">
+                <div className="relative max-w-xs overflow-hidden rounded-2xl shadow-lg group my-4">
+                  <img
+                    src={postDbObj.PreviewFile(postEditData.image[0])}
+                    alt={postDbObj.title}
+                    // className="rounded-lg"
+                    className="transition-transform border-2 border-cyan-600 rounded-sm  group-hover:scale-110 duration-200 object-cover object-center w-[100%] h-[100%]"
+                  />
+                </div>
+              )}
 
-            <Select
-              options={["active", "inactive"]}
-              label="Status"
-              className="w-full h-10 rounded-md p-2 mb-4 bg-gray-100"
-              {...register("status", { required: true })}
-            />
-            <Button
-              type="submit"
-              bgColor={postEditData ? "bg-green-500" : undefined}
-              className="w-full"
-            >
-              {postEditData ? "Update" : "Submit"}
-            </Button>
-          </div>
-        </form>
+              <Select
+                options={["active", "inactive"]}
+                label="Status"
+                className="w-full h-10 rounded-md p-2 mb-4 bg-gray-100"
+                {...register("status", { required: true })}
+              />
+              <Button
+                type="submit"
+                bgColor={postEditData ? "bg-green-500" : undefined}
+                className="w-full"
+              >
+                {postEditData ? "Update" : "Submit"}
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
 
     // <div className="w-1/2 mx-auto relative overflow-hidden p-2 mt-4">
     //   <div className="bg-transparent p-6 border-b-4 border-t-4 rounded-3xl ">

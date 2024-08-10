@@ -5,15 +5,17 @@ import { Link, useNavigate } from "react-router-dom";
 import authObj from "../Appwrite/Auth.js";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../Slice/HomestaySlice.js";
+import Loader from "./Loader";
 
 const Signup = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const signInData = async (data) => {
-    console.log(data);
+    setLoading(true);
     setError("");
     try {
       const user = await authObj.CreateAccount(data);
@@ -25,18 +27,24 @@ const Signup = () => {
         //   dispatch(login(userdata))
         //   navigate("/")
         // }
-        console.log("User Data From Appwrite");
+        setLoading(false);
 
         // dispatch(login(user))
         navigate("/login");
       }
     } catch (error) {
-      setError("Error Occured ", error.message);
+      setLoading(false);
+      setError(error.message);
     }
   };
 
   return (
     <>
+      {loading && (
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+          <Loader />
+        </div>
+      )}
       <div className="relative overflow-hidden top-24 lg:top-44 flex flex-col lg:flex-row w-full flex-wrap content-center items-center justify-center gap-8 p-4">
         <div className="overflow-hidden">
           <img

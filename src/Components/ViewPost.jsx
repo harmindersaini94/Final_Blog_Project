@@ -4,6 +4,7 @@ import postDbObj from "../Appwrite/Database";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { Button } from "./Index";
+import Loader from "./Loader";
 
 const ViewPost = () => {
   const [postData, setPostData] = useState(null);
@@ -12,6 +13,9 @@ const ViewPost = () => {
   const [author, setAuthor] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [created, setCreated] = useState(null);
+  const [updated, setUpdated] = useState(null);
 
   const loggedUserDetail = useSelector((state) => state.userdata);
 
@@ -22,41 +26,62 @@ const ViewPost = () => {
       : false;
 
   const deletePost = () => {
+    setLoading(true);
     postDbObj.DeletePost(postData.$id).then((response) => {
       if (response) {
         for (let i = 0; i < postData.image.length; i++) {
           postDbObj.DeleteFile(postData.image[i]);
         }
+        setLoading(false);
         navigate("/");
       }
     });
   };
 
   useEffect(() => {
+    setLoading(true);
     postDbObj.GetAllPosts().then((response) => {
       if (response) {
         setAllPost(response.documents);
-        console.log("All Posts here 123122 ", response);
       }
     });
+
+    setLoading(false);
+
   }, []);
 
   useEffect(() => {
+  
     if (id) {
       // Means if user put any vauge id, then just navigate to home page
       postDbObj.GetParticularPost(id).then((post) => {
         if (post) {
-          console.log(post.address);
           setPostData(post);
+          const creationDate = new Date(post.$createdAt);
+          const updationDate = new Date(post.$updatedAt);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+          setCreated(creationDate.toLocaleDateString('en-US', options))
+          setUpdated(updationDate.toLocaleDateString('en-US', options))
 
           const pImg = postDbObj.PreviewFile(post.image[0]);
           setPostImage(pImg);
         }
       });
-    } else navigate("/");
+
+    } else {
+      navigate("/");
+    }
+
   }, [id, navigate]); // Each time there is navigation of change of ID, run useEffect
+
   return postData ? (
     <>
+      {loading && (
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+          <Loader />
+        </div>
+      )}
       <div className="container mx-auto px-4 py-8 mt-16 flex flex-col lg:flex-row">
         {/* <!-- Sidebar --> */}
         <aside className="w-full lg:w-1/5 bg-gradient-to-r from-teal-400 to-cyan-600 p-4 shadow mb-4 lg:mb-0 rounded-xl ">
@@ -65,8 +90,8 @@ const ViewPost = () => {
           </h2>
           <ul className="space-y-2">
             {allPost &&
-              allPost.map((post, index) => (
-                <li id={index}>
+              allPost?.map((post, index) => (
+                <li key={index}>
                   <Link
                     to={`/viewpost/${post.$id}`}
                     className="text-gray-700 italic hover:text-black hover:font-semibold"
@@ -90,9 +115,7 @@ const ViewPost = () => {
                 <div>
                   {isSame && (
                     <Link to={`/editpost/${postData.$id}`}>
-                      <Button bgColor="bg-green-500" >
-                        Edit
-                      </Button>
+                      <Button bgColor="bg-green-500">Edit</Button>
                     </Link>
                   )}
                 </div>
@@ -106,12 +129,13 @@ const ViewPost = () => {
               </div>
             </div>
 
-            <p className="text-gray-600 mb-5">
-              Created at: {postData.$createdAt}{" "}
+            <h3 className="text-gray-600 italic mb-5">
+              {/* Created at: {postData.$createdAt} */}
+              Created on : {created}
               {postData.$updatedAt && (
-                <span>| Updated at: {postData.$updatedAt}</span>
+                <span> || Updated on : {updated}</span>
               )}
-            </p>
+            </h3>
 
             <div className="flex justify-center items-center group">
               <img
@@ -121,7 +145,7 @@ const ViewPost = () => {
               />
             </div>
 
-            <p>{parse(postData.description)}</p>
+            <h3>{parse(postData.description)}</h3>
           </article>
         </main>
       </div>

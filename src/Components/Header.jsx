@@ -7,6 +7,7 @@ import authObj from "../Appwrite/Auth.js";
 import { logout } from "../Slice/HomestaySlice.js";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Loader from "./Loader";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,17 +15,21 @@ const Header = () => {
   const userdata = useSelector((state) => state.userdata);
   const dispatch = useDispatch();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   console.log("Login Status ", loginStat);
 
   const logoutFn = async () => {
-    console.log("here");
+    setLoading(true);
     try {
       // delete all the sessions
       const response = await authObj.Logout();
       dispatch(logout());
+      setLoading(false);
       navigate("/");
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const navItemLeft = [
@@ -59,6 +64,12 @@ const Header = () => {
   ];
 
   return (
+    <>
+          {loading && (
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+          <Loader />
+        </div>
+      )}
     <div className="mt-0 w-full px-2 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-400 to-blue-600 h-16 items-center justify-between">
       <header className="absolute inset-x-0 top-0 z-50 overflow-hidden">
         <nav
@@ -196,6 +207,7 @@ const Header = () => {
         </Dialog>
       </header>
     </div>
+    </>
     // <header className="w-full h-20 absolute bg-cyan-800 text-black">
     //   <nav className=" overflow-hidden flex flex-wrap justify-between p-2">
     //     <div className="m-2 flex items-center justify-center gap-4 text-xl">

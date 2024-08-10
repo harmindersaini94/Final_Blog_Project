@@ -25,7 +25,7 @@ class AppwriteAuth{
             return response
         } catch (error) {
             console.log("Appwrite serive :: CreateAccount :: error", error);
-            throw "Appwrite serive :: CreateAccount :: error", error
+            throw error
         }
     }
     async LoginAccount({email, password}){
@@ -35,7 +35,7 @@ class AppwriteAuth{
                 return session
         } catch (error) {
             console.log("Appwrite serive :: LoginAccount :: error", error);
-            throw "Appwrite serive :: LoginAccount :: error", error
+            throw error
         }
     }
     async GetCurrentLoggedInUser(){
@@ -44,7 +44,7 @@ class AppwriteAuth{
             return user
         } catch (error) {
             console.log("Appwrite serive :: GetCurrentLoggedInUser :: error", error);
-            throw "Appwrite serive :: GetCurrentLoggedInUser :: error", error
+            throw error
         }
     }
     async Logout() {
@@ -53,7 +53,7 @@ class AppwriteAuth{
             
         } catch (error) {
             console.log("Appwrite serive :: Logout :: error", error);
-            throw "Appwrite serive :: Logout :: error", error
+            throw error
         }
     }
 }
