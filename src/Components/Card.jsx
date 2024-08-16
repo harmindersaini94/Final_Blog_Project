@@ -4,6 +4,9 @@ import postDbObj from "../Appwrite/Database";
 import userLogo from "../assets/user.jpg";
 
 const Card = ({ $id, title, image, email }) => {
+  const match = email.match(/^([^@]+)@/);
+  const finalTxt = match ? match[1] : "";
+   
   return (
     <>
       <Link to={`/viewpost/${$id}`}>
@@ -22,7 +25,8 @@ const Card = ({ $id, title, image, email }) => {
                 <span>
                   <img src={userLogo} className="rounded-full" />
                 </span>
-                {email.match(/^([^@]+)@/) ? email.match(/^([^@]+)@/)[1] : ""}{" "}
+                {/* {email.match(/^([^@]+)@/) ? email.match(/^([^@]+)@/)[1] : ""} */}
+                {finalTxt}
               </p>
             </div>
           </div>

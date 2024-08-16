@@ -8,8 +8,6 @@ import Loader from "./Loader";
 import { motion } from "framer-motion";
 
 const AddPost = ({ postEditData }) => {
-  console.log("DATA FROM EDIT FORM", postEditData);
-
   const { register, handleSubmit, control, getValues, reset } = useForm({
     defaultValues: {
       title: postEditData?.title || "",
@@ -61,6 +59,7 @@ const AddPost = ({ postEditData }) => {
 
         data.userid = userdata.$id;
         data.image = fileIdArr;
+        data.email = userdata.email;
 
         const file = await postDbObj.CreatePost(data);
         if (file) {
@@ -94,6 +93,7 @@ const AddPost = ({ postEditData }) => {
         data.userid = userdata.$id;
         data.image = fileIdArr.length > 0 ? fileIdArr : undefined;
         data.postID = postEditData.$id;
+        data.email = userdata.email;
 
         const file = await postDbObj.UpdatePost(data);
         if (file) {
@@ -138,11 +138,10 @@ const AddPost = ({ postEditData }) => {
               <Input
                 label="Post Title :"
                 placeholder="Post Title"
-                // className="mb-4"
                 defaultValue={postEditData?.title || ""}
                 {...register("title", { required: true })}
               />
-              <Input
+              {/* <Input
                 label="Email :"
                 placeholder="Email"
                 className="mb-4"
@@ -159,7 +158,7 @@ const AddPost = ({ postEditData }) => {
                 placeholder="Address"
                 className="mb-4"
                 {...register("address", { required: true })}
-              />
+              /> */}
               <RTE
                 label="Description :"
                 name="description"
