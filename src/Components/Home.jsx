@@ -46,6 +46,8 @@ const Home = () => {
             // ? is done so that even if array
             (post, index) => (
               <div key={post.$id} className="">
+{                console.log(post)}
+                
                 <Card {...post} />
               </div>
             )

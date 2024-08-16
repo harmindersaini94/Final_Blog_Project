@@ -24,14 +24,6 @@ class PostDatabase {
     userid,
   }) {
     try {
-        console.log("hiiiii", title,
-            description,
-            email,
-            phone,
-            address,
-            status,
-            image,
-            userid)
       const response = await this.database.createDocument(
         envObj.DATABASE_ID,
         envObj.COLLECTION_ID,
@@ -72,7 +64,10 @@ class PostDatabase {
     try {
       const allPosts = await this.database.listDocuments(
         envObj.DATABASE_ID,
-        envObj.COLLECTION_ID
+        envObj.COLLECTION_ID,
+        [
+          Query.equal('status', 'active')
+        ]
       )
       return allPosts
     } catch (error) {
@@ -158,7 +153,6 @@ async UpdatePost({
 }
 
 PreviewFile(fileId){
-  console.log("Image here 123", fileId)
   try {
       return this.storage.getFilePreview(
           envObj.BUCKET_ID,

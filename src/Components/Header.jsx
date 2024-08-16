@@ -18,8 +18,6 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  console.log("Login Status ", loginStat);
-
   const logoutFn = async () => {
     setLoading(true);
     try {
