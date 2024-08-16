@@ -17,7 +17,6 @@ const EditPost = () => {
       setLoading(true);
       postDbObj.GetParticularPost(id).then((post) => {
         if (post) {
-          console.log(post.address);
           setPostData(post);
 
           const pImg = postDbObj.PreviewFile(post.image[0]);

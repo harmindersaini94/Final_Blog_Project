@@ -80,7 +80,6 @@ const ViewPost = () => {
         </div>
       )}
       <div className="container mx-auto px-4 py-8 mt-16 flex flex-col lg:flex-row">
-        {/* <!-- Sidebar --> */}
         <motion.aside
           className="w-full lg:w-1/5 bg-gradient-to-r from-teal-400 to-cyan-600 p-4 shadow mb-4 lg:mb-0 rounded-xl "
           initial={{ x: -200, opacity: 0 }}
@@ -102,8 +101,6 @@ const ViewPost = () => {
                   </Link>
                 </li>
               ))}
-
-            {/* <!-- Add more categories as needed --> */}
           </ul>
         </motion.aside>
 
@@ -156,30 +153,6 @@ const ViewPost = () => {
       </div>
     </>
   ) : null;
-
-  // <div className="py-8">
-  //   <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-  //     <img src={postImg} alt={postData.title} className="rounded-xl" />
-  //     {
-  //         isSame && (
-  //             <div className="absolute right-6 top-6">
-  //             <Link to={`/editpost/${postData.$id}`}>
-  //                 <Button bgColor="bg-green-500" className="mr-3">
-  //                     Edit
-  //                 </Button>
-  //             </Link>
-  //             <Button bgColor="bg-red-500" onClick={deletePost}>
-  //                 Delete
-  //             </Button>
-  //         </div>
-  //         )
-  //     }
-  //   </div>
-  //   <div className="w-full mb-6">
-  //     <h1 className="text-2xl font-bold">{postData.title}</h1>
-  //   </div>
-  //   <div className="browser-css">{parse(postData.description)}</div>
-  // </div>
 };
 
 export default ViewPost;

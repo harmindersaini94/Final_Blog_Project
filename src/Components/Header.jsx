@@ -217,46 +217,6 @@ const Header = () => {
         </header>
       </motion.div>
     </>
-    // <header className="w-full h-20 absolute bg-cyan-800 text-black">
-    //   <nav className=" overflow-hidden flex flex-wrap justify-between p-2">
-    //     <div className="m-2 flex items-center justify-center gap-4 text-xl">
-    //       <Link to="/">
-    //         <Logo />
-    //       </Link>
-    //       {navItemLeft.map(
-    //         (item, index) =>
-    //           item.status && (
-    //             <li className="list-none" key={index}>
-    //               <button onClick={() => navigate(item.path)}>
-    //                 {item.name}
-    //               </button>
-    //             </li>
-    //           )
-    //       )}
-    //     </div>
-    //     <div className="pl-6 flex flex-wrap items-center justify-center gap-4">
-    //       <div className="mr-8 flex items-center justify-center gap-4 text-xl">
-    //         {navItemRight.map(
-    //           (item, index) =>
-    //             item.status && (
-    //               <li className="list-none" key={index}>
-    //                 <button onClick={() => navigate(item.path)}>
-    //                   {item.name}
-    //                 </button>
-    //               </li>
-    //             )
-    //         )}
-    //         {loginStat && (
-    //           <>
-    //             <li className="list-none">
-    //               <button onClick={logoutFn}>Logout</button>
-    //             </li>
-    //           </>
-    //         )}
-    //       </div>
-    //     </div>
-    //   </nav>
-    // </header>
   );
 };
 

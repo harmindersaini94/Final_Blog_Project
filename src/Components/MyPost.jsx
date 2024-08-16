@@ -52,16 +52,6 @@ const MyPost = () => {
         </motion.div>
       </div>
     </>
-    // <div className="w-full py-8">
-    //   <div className="flex flex-wrap">
-    //     {allPostData.map((post) => (
-    //       <div key={post.$id} className="p-8 w-1/4">
-    //         {console.log("post here", post)}
-    //         <Card {...post} />
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
   );
 };
 

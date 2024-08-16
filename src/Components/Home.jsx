@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import postDbObj from "../Appwrite/Database";
-import { Button, Card } from "./Index";
+import { Card } from "./Index";
 import Loader from "./Loader";
 import { motion } from "framer-motion";
 
@@ -43,9 +43,8 @@ const Home = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           {allPostData?.map(
-            // ? is doneso that even if array
+            // ? is done so that even if array
             (post, index) => (
-              // index < 3 && (
               <div key={post.$id} className="">
                 <Card {...post} />
               </div>
@@ -53,12 +52,8 @@ const Home = () => {
             // )
           )}
         </motion.div>
-        {/* <Button className="mt-12" type="submit" children="See More Listing" /> */}
       </div>
     </>
-    //   </div>
-    // </div>
-    //{/* </div> */}
   );
 };
 

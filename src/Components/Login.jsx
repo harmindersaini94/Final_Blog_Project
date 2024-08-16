@@ -60,9 +60,6 @@ const Login = () => {
         >
           <img
             className="w-[300px] lg:w-[470px]  rounded-3xl object-contain "
-            // src="https://images.pexels.com/photos/3127880/pexels-photo-3127880.jpeg?auto=compress&cs=tinysrgb&w=600"
-            // src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg"
-            // src="https://img.freepik.com/premium-vector/guardian-digital-realm-mans-vigilance-login-gate_1134661-21312.jpg?size=626&ext=jpg&ga=GA1.1.1631588099.1721891347&semt=ais_hybrid"
             src={signin}
           />
         </motion.div>
@@ -115,56 +112,6 @@ const Login = () => {
           </form>
         </motion.div>
       </div>
-
-      {/* <div className="flex items-center justify-center">
-      <div
-        className={`mx-auto w-full max-w-lg bg-gray-50 rounded-xl p-10 border border-black/10`}
-      >
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%"></Logo>
-          </span>
-        </div>
-        <h2 className="text-center text-2xl font-bold leading-right">
-          Sign in to your account
-        </h2>
-        <p className="mx-2 text-center text-base text-black/60">
-          Don&apos;t have any account?&nbsp;
-          <Link
-            to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
-          >
-            Sign Up
-          </Link>
-        </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-        <form onSubmit={handleSubmit(loginData)} class="mt-4">
-          <div className="space-y-5">
-            <Input
-              label="Email: "
-              placeholder="Enter Email"
-              className=""
-              type="email"
-              {...register("email", {
-                required: true,
-              })}
-            />
-
-            <Input
-              label="Password: "
-              placeholder="Enter Password"
-              className=""
-              type="password"
-              {...register("password", {
-                required: true,
-              })}
-            />
-
-            <Button type="submit" children="Sign In" />
-          </div>
-        </form>
-      </div>
-    </div> */}
     </>
   );
 };
